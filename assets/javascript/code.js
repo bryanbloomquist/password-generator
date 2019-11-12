@@ -1,7 +1,7 @@
 const lowerCase = [ "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z" ];
 const upperCase = [ "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z" ];
 const numbers = [ 1,2,3,4,5,6,7,8,9,0 ];
-const characters = [ "!","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","=",">","?","@","[","^","`","|","~" ];
+const characters = [ "!","#","$","%","&","*","+","?","@","~" ];
 let possibleCharacters = [];
 let userPassword = [];
 let pwLength = 8;
@@ -57,7 +57,7 @@ const checkValidity = ( userPassword ) => {
 const checkLowerCase = ( userPassword ) => {
 	lowerCaseValidator = 0;
 	for ( let i = 0; i < userPassword.length; ++i ) {
-		if (( lowerCase.indexOf( userPassword[ i ]) !== -1 )) {
+		if ( lowerCase.includes( userPassword[ i ])) {
 			lowerCaseValidator++;
 		}
 	}
@@ -78,7 +78,7 @@ const checkLowerCase = ( userPassword ) => {
 const checkUpperCase = ( userPassword ) => {
 	upperCaseValidator = 0;
 	for ( let i = 0; i < userPassword.length; ++i ) {
-		if (( upperCase.indexOf( userPassword[ i ]) !== -1 )) {
+		if ( upperCase.includes( userPassword[ i ])) {
 			upperCaseValidator++;
 		}
 	}
@@ -97,7 +97,7 @@ const checkUpperCase = ( userPassword ) => {
 const checkNumbers = ( userPassword ) => {
 	numbersValidator = 0;
 	for ( let i = 0; i < userPassword.length; ++i ) {
-		if (( numbers.indexOf( userPassword[ i ]) !== -1 )) {
+		if ( numbers.includes( userPassword[ i ])) {
 			numbersValidator++;
 		}
 	}
@@ -114,7 +114,7 @@ const checkNumbers = ( userPassword ) => {
 const checkCharacters = ( userPassword ) => {
 	charactersValidator = 0;
 	for ( let i = 0; i < userPassword.length; ++i ) {
-		if (( characters.indexOf( userPassword[ i ]) !== -1 )) {
+		if ( characters.includes( userPassword[ i ])) {
 			charactersValidator++;
 		}
 	}
@@ -127,5 +127,30 @@ const checkCharacters = ( userPassword ) => {
 };
 
 const displayPassword = () => {
+	console.log( "Your password is: " + userPassword.join( "" ));
 	document.getElementById( "generatedPassword" ).innerHTML = userPassword.join( "" );
 };
+
+const copyPassword = (  ) => {
+	if ( userPassword.length > 0 ) {
+		let el = document.createElement( "textarea" );
+		el.value = userPassword.join( "" );
+		document.body.appendChild( el );
+		el.select();
+		document.execCommand( "copy" );
+		document.body.removeChild( el );
+		console.log( "Copied password to clipboard: " + el.value );	
+	} else {
+		console.log( "No password has been generated yet." )
+	}
+};
+
+// const copyPassword = (  ) => {
+// 	let el = document.createElement( "textarea" );
+// 	el.value = document.getElementById( "generatedPassword" ).innerHTML;
+// 	document.body.appendChild( el );
+// 	el.select();
+// 	document.execCommand( "copy" );
+// 	document.body.removeChild( el );
+// 	console.log( "Copied the text: " + el.value );
+// };
