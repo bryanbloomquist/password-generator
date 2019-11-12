@@ -39,7 +39,6 @@ const createPassword = ( ) => {
 		let x = Math.floor( Math.random() * possibleCharacters.length );
 		userPassword.push( possibleCharacters[ x ]);
 	};
-	console.log( userPassword.join( "" ));
 	checkValidity( userPassword );
 };
 
@@ -62,7 +61,6 @@ const checkLowerCase = ( userPassword ) => {
 			lowerCaseValidator++;
 		}
 	}
-	console.log( lowerCaseValidator );
 	if ( !lowerCaseValidator ) {
 		console.log( "There were no lower case letters, generating new password..." );
 		createPassword();
@@ -84,7 +82,6 @@ const checkUpperCase = ( userPassword ) => {
 			upperCaseValidator++;
 		}
 	}
-	console.log( upperCaseValidator );
 	if ( !upperCaseValidator ) {
 		console.log( "There were no upper case letters, generating new password..." );
 		createPassword();
@@ -104,7 +101,6 @@ const checkNumbers = ( userPassword ) => {
 			numbersValidator++;
 		}
 	}
-	console.log( numbersValidator );
 	if ( !numbersValidator ) {
 		console.log( "There were no numbers, generating new password..." );
 		createPassword();
@@ -122,7 +118,6 @@ const checkCharacters = ( userPassword ) => {
 			charactersValidator++;
 		}
 	}
-	console.log( charactersValidator );
 	if ( !charactersValidator ) {
 		console.log( "There were no special characters, generating new password..." );
 		createPassword();
