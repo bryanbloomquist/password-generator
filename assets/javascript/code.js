@@ -2,6 +2,7 @@ const lowerCase = [ "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o",
 const upperCase = [ "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z" ];
 const numbers = [ 1,2,3,4,5,6,7,8,9,0 ];
 const characters = [ "!","#","$","%","&","*","+","?","@","~" ];
+const jumbotron = document.getElementById( "generatedPassword" );
 let possibleCharacters = [];
 let userPassword = [];
 let pwLength = 8;
@@ -19,6 +20,14 @@ const createPassword = ( ) => {
 	possibleCharacters = [];
 	userPassword = [];
 	pwLength = parseInt( document.getElementById( "passwordLength" ).value );
+	if ( pwLength < 8 ) {
+		jumbotron.innerHTML = "Password length is too short.";
+		return;
+	}
+	if ( pwLength > 128 ) {
+		jumbotron.innerHTML = "Password length is too long."
+		return;
+	}
 	pwBoolean1 = document.getElementById( "firstVariable" ).checked;
 	pwBoolean2 = document.getElementById( "secondVariable" ).checked;
 	pwBoolean3 = document.getElementById( "thirdVariable" ).checked;
@@ -51,6 +60,8 @@ const checkValidity = ( userPassword ) => {
 		checkNumbers( userPassword );
 	} else if ( pwBoolean4 ) {
 		checkCharacters( userPassword );
+	} else {
+		jumbotron.innerHTML = "You must select at least one variable field."
 	}
 }
 
@@ -128,7 +139,7 @@ const checkCharacters = ( userPassword ) => {
 
 const displayPassword = () => {
 	console.log( "Your password is: " + userPassword.join( "" ));
-	document.getElementById( "generatedPassword" ).innerHTML = userPassword.join( "" );
+	jumbotron.innerHTML = userPassword.join( "" );
 };
 
 const copyPassword = (  ) => {
@@ -144,13 +155,3 @@ const copyPassword = (  ) => {
 		console.log( "No password has been generated yet." )
 	}
 };
-
-// const copyPassword = (  ) => {
-// 	let el = document.createElement( "textarea" );
-// 	el.value = document.getElementById( "generatedPassword" ).innerHTML;
-// 	document.body.appendChild( el );
-// 	el.select();
-// 	document.execCommand( "copy" );
-// 	document.body.removeChild( el );
-// 	console.log( "Copied the text: " + el.value );
-// };
