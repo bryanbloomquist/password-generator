@@ -26,26 +26,25 @@
       <div class="col-12 col-sm-8 col-md-6">
         <form class="p-3">
           <div class="form-row m-3">
-            <div class="col-3">
-              <input type="number" class="form-control" id="passwordLength" min="8" max="128" value="16">
-            </div>
-            <label for="passwordLength" class="col-9 my-1 py-1">Password length</label>
+            <label class="col-8" for="sliderLength">Select Password Length: </label>
+            <input type="number" class="form-control col-4" id="passwordLength" value="64">
+            <input type="range" class="form-control-range mt-3" id="sliderLength" min="8" max="128">
           </div>
           <div class="form-check custom-checkbox m-3">
-            <input class="form-check-input" type="checkbox" id="firstVariable">
-            <label class="form-check-label" for="firstVariable">Use lowercase letters</label>
+            <input class="form-check-input" type="checkbox" id="lowerCase">
+            <label class="form-check-label" for="lowerCase">Use lowercase letters</label>
           </div>
           <div class="form-check custom-checkbox m-3">
-            <input class="form-check-input" type="checkbox" id="secondVariable">
-            <label class="form-check-label" for="secondVariable">Use uppercase letters</label>
+            <input class="form-check-input" type="checkbox" id="upperCase">
+            <label class="form-check-label" for="upperCase">Use uppercase letters</label>
           </div>
           <div class="form-check custom-checkbox m-3">
-            <input class="form-check-input" type="checkbox" id="thirdVariable">
-            <label class="form-check-label" for="thirdVariable">Use numbers</label>
+            <input class="form-check-input" type="checkbox" id="numbers">
+            <label class="form-check-label" for="numbers">Use numbers</label>
           </div>
           <div class="form-check custom-checkbox m-3">
-            <input class="form-check-input" type="checkbox" id="fourthVariable">
-            <label class="form-check-label" for="fourthVariable">Use special characters</label>
+            <input class="form-check-input" type="checkbox" id="characters">
+            <label class="form-check-label" for="characters">Use special characters</label>
           </div>
           <button class="btn btn-dark btn-block mb-3" type="button" onclick=createPassword()>
             Generate Password

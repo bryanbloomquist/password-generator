@@ -3,18 +3,29 @@ const upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 const characters = ["!", "#", "$", "%", "&", "*", "+", "?", "@", "~"];
 const jumbotron = document.getElementById("generatedPassword");
+const sliderEl = document.getElementById("sliderLength");
+const lengthEl = document.getElementById("passwordLength");
 let possibleCharacters = [];
 let userPassword = [];
 let pwLength = 8;
-let pwBoolean1 = false;
-let pwBoolean2 = false;
-let pwBoolean3 = false;
-let pwBoolean4 = false;
+let lowerCaseBoolean = false;
+let upperCaseBoolean = false;
+let numbersBoolean = false;
+let charactersBoolean = false;
 let lowerCaseValidator = 0;
 let upperCaseValidator = 0;
 let numbersValidator = 0;
 let charactersValidator = 0;
 let passwordIsValid = false;
+
+//
+sliderEl.addEventListener("click", function(){
+  lengthEl.value = sliderEl.value;
+});
+
+lengthEl.onchange = function(){
+  sliderEl.value = lengthEl.value;
+}
 
 const createPassword = () => {
   // empty variables to be used
@@ -33,21 +44,21 @@ const createPassword = () => {
     return;
   }
   // check to see which other variables the user selected
-  pwBoolean1 = document.getElementById("firstVariable").checked;
-  pwBoolean2 = document.getElementById("secondVariable").checked;
-  pwBoolean3 = document.getElementById("thirdVariable").checked;
-  pwBoolean4 = document.getElementById("fourthVariable").checked;
+  lowerCaseBoolean = document.getElementById("lowerCase").checked;
+  upperCaseBoolean = document.getElementById("upperCase").checked;
+  numbersBoolean = document.getElementById("numbers").checked;
+  charactersBoolean = document.getElementById("characters").checked;
   //if a variable is selected, add those characters to 'possibleCharacters' array
-  if (pwBoolean1) {
+  if (lowerCaseBoolean) {
     possibleCharacters = possibleCharacters.concat(lowerCase);
   }
-  if (pwBoolean2) {
+  if (upperCaseBoolean) {
     possibleCharacters = possibleCharacters.concat(upperCase);
   }
-  if (pwBoolean3) {
+  if (numbersBoolean) {
     possibleCharacters = possibleCharacters.concat(numbers);
   }
-  if (pwBoolean4) {
+  if (charactersBoolean) {
     possibleCharacters = possibleCharacters.concat(characters);
   }
   //add a random character from 'possibleCharacters' to 'userPassword' array
@@ -61,16 +72,16 @@ const createPassword = () => {
 
 const checkValidity = (userPassword) => {
   //if lowerCase was selected, check for lower case characters
-  if (pwBoolean1) {
+  if (lowerCaseBoolean) {
     checkLowerCase(userPassword);
   //if upperCase was selected, check for upper case characters
-  } else if (pwBoolean2) {
+  } else if (upperCaseBoolean) {
     checkUpperCase(userPassword);
   //if numbers was selected, check for numbers in password
-  } else if (pwBoolean3) {
+  } else if (numbersBoolean) {
     checkNumbers(userPassword);
   //if characters was selected, check for special characters
-  } else if (pwBoolean4) {
+  } else if (charactersBoolean) {
     checkCharacters(userPassword);
   //if no variables were selected, inform user they have to select at least one
   } else {
@@ -91,13 +102,13 @@ const checkLowerCase = (userPassword) => {
   if (!lowerCaseValidator) {
     createPassword();
   //if upperCase was selected earlier, check for upper case characters
-  } else if (pwBoolean2) {
+  } else if (upperCaseBoolean) {
     checkUpperCase(userPassword);
   //if numbers was selected earlier, check for numbers
-  } else if (pwBoolean3) {
+  } else if (numbersBoolean) {
     checkNumbers(userPassword);
   //if special characters was selected earlier, check for special characters
-  } else if (pwBoolean4) {
+  } else if (charactersBoolean) {
     checkCharacters(userPassword);
   //if no other variables were selected, display the password
   } else {
@@ -118,10 +129,10 @@ const checkUpperCase = (userPassword) => {
   if (!upperCaseValidator) {
     createPassword();
   //if numbers was selected earlier, check for numbers
-  } else if (pwBoolean3) {
+  } else if (numbersBoolean) {
     checkNumbers(userPassword);
   //if special characters was selected earlier, check for special characters
-  } else if (pwBoolean4) {
+  } else if (charactersBoolean) {
     checkCharacters(userPassword);
   //if no other variables were selected, display the password
   } else {
@@ -142,7 +153,7 @@ const checkNumbers = (userPassword) => {
   if (!numbersValidator) {
     createPassword();
   //if special characters was selected earlier, check for special characters
-  } else if (pwBoolean4) {
+  } else if (charactersBoolean) {
     checkCharacters(userPassword);
   //if no other variables were selected, display the password
   } else {
