@@ -89,7 +89,6 @@ const checkLowerCase = (userPassword) => {
   }
   //if lowerCaseValidator is still 0, create a new password and try again
   if (!lowerCaseValidator) {
-    console.log("There were no lower case letters, generating new password...");
     createPassword();
   //if upperCase was selected earlier, check for upper case characters
   } else if (pwBoolean2) {
@@ -117,7 +116,6 @@ const checkUpperCase = (userPassword) => {
   }
   //if upperCaseValidator is still 0, create a new password and try again
   if (!upperCaseValidator) {
-    console.log("There were no upper case letters, generating new password...");
     createPassword();
   //if numbers was selected earlier, check for numbers
   } else if (pwBoolean3) {
@@ -142,7 +140,6 @@ const checkNumbers = (userPassword) => {
   }
   //if numberValidator is still 0, create a new password and try again
   if (!numbersValidator) {
-    console.log("There were no numbers, generating new password...");
     createPassword();
   //if special characters was selected earlier, check for special characters
   } else if (pwBoolean4) {
@@ -164,7 +161,6 @@ const checkCharacters = (userPassword) => {
   }
   //if characterValidator is still 0, create a new password and try again
   if (!charactersValidator) {
-    console.log("There were no special characters, generating new password...");
     createPassword();
   //display the password
   } else {
@@ -174,7 +170,6 @@ const checkCharacters = (userPassword) => {
 
 //display the password
 const displayPassword = () => {
-  console.log("Your password is: " + userPassword.join(""));
   jumbotron.innerHTML = userPassword.join("");
 };
 
@@ -193,9 +188,6 @@ const copyPassword = () => {
     document.execCommand("copy");
     //delete the newly created element from the document
     document.body.removeChild(el);
-    console.log("Copied password to clipboard: " + el.value);
   //if password has not been generated yet, do nothing.
-  } else {
-    console.log("No password has been generated yet.")
   }
 };
