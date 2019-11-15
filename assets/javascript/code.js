@@ -18,14 +18,15 @@ let numbersValidator = 0;
 let charactersValidator = 0;
 let passwordIsValid = false;
 
-//
+//changes the display value of password length in form box when slider is changed
 sliderEl.addEventListener("click", function(){
   lengthEl.value = sliderEl.value;
 });
 
+//changes the display value of password length in slider when form box is changed
 lengthEl.onchange = function(){
   sliderEl.value = lengthEl.value;
-}
+};
 
 const createPassword = () => {
   // empty variables to be used
