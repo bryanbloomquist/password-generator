@@ -60,6 +60,8 @@
 
 A password generator app
 
+![Password Generator App Screenshot](https://bryanbloomquist.github.io/password-generator/assets/images/password-generator.PNG)
+
 ### Built With
 
 * [HTML]
